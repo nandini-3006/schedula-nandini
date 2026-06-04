@@ -31,7 +31,7 @@ The ER Diagram is available in:
 
 `docs-er diagram/Screenshot 2026-06-04 185317.png`
 
-![ER Diagram](docs-er diagram/Screenshot 2026-06-04 185317.png)
+![ER Diagram](docs-er%20diagram/Screenshot%202026-06-04%20185317.png)
 
 ---
 
