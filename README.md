@@ -36,8 +36,10 @@ NestJS • TypeORM • PostgreSQL (Docker) • JWT • bcrypt
 ---
 
 ## 🧱 File Structure
+## 🧱 File Structure
+
+
 src
-│
 ├── auth
 │ ├── dto
 │ │ ├── login.dto.ts
