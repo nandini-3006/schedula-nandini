@@ -34,9 +34,9 @@ NestJS • TypeORM • PostgreSQL (Docker) • JWT • bcrypt
 - Entire flow tested using Postman collection
 
 ---
-![Login](./postman%20ss/Screenshot 2026-06-05 213535.png)
+![Login](./postman%20ss/Screenshot%202026-06-05%20213535.png)
 
-![Role Check](./postman%20ss/Screenshot 2026-06-05 214031.png)
+![Role Check](./postman%20ss/Screenshot%202026-06-05%20214031.png)
 
 ## 🧱 File Structure
 
