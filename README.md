@@ -29,7 +29,7 @@ NestJS • TypeORM • PostgreSQL (Docker) • JWT • bcrypt
   - `roles.decorator.ts`
   - `roles.guard.ts`
 - Password hashing using bcrypt
-- PostgreSQL connected via Docker container
+- PostgreSQL connected via Docker container and user table verified locally
 - User data stored & verified in database
 - Entire flow tested using Postman collection
 
