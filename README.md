@@ -36,27 +36,26 @@ NestJS • TypeORM • PostgreSQL (Docker) • JWT • bcrypt
 ---
 
 ## 🧱 File Structure
-## 🧱 File Structure
 
-
+```bash
 src
 ├── auth
-│ ├── dto
-│ │ ├── login.dto.ts
-│ │ └── signup.dto.ts
-│ │
-│ ├── auth.controller.ts
-│ ├── auth.module.ts
-│ ├── auth.service.ts
-│ │
-│ ├── jwt-auth.guard.ts
-│ ├── jwt.strategy.ts
-│ ├── roles.decorator.ts
-│ ├── roles.guard.ts
-│ └── user.entity.ts
+│   ├── dto
+│   │   ├── login.dto.ts
+│   │   └── signup.dto.ts
+│   │
+│   ├── auth.controller.ts
+│   ├── auth.module.ts
+│   ├── auth.service.ts
+│   │
+│   ├── jwt-auth.guard.ts
+│   ├── jwt.strategy.ts
+│   ├── roles.decorator.ts
+│   ├── roles.guard.ts
+│   └── user.entity.ts
 │
 ├── common
-│ └── role.enum.ts
+│   └── role.enum.ts
 │
 ├── app.module.ts
 └── main.ts
