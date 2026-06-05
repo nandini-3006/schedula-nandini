@@ -34,6 +34,11 @@ NestJS • TypeORM • PostgreSQL (Docker) • JWT • bcrypt
 - Entire flow tested using Postman collection
 
 ---
+### Signup & Login
+![Login](./postman-ss/Screenshot 2026-06-05 213535.png)
+
+### Role-Based Access
+![Role Check](./postman-ss/Screenshot 2026-06-05 214031.png)
 
 ## 🧱 File Structure
 
@@ -59,8 +64,3 @@ src
 │
 ├── app.module.ts
 └── main.ts
-### Signup & Login
-![Login](./postman-ss/Screenshot 2026-06-05 213535.png)
-
-### Role-Based Access
-![Role Check](./postman-ss/Screenshot 2026-06-05 214031.png)
