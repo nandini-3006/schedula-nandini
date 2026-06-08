@@ -1,61 +1,71 @@
-# 🔐 Role-Based Authentication System (NestJS)
+# 🔐 Doctor & Patient Onboarding
 
-Day 2 Backend Internship Task – Schedula Project
-
----
+Day 3 Backend Internship Task
 
 ## ⚙️ Tech Stack
-NestJS • TypeORM • PostgreSQL (Docker) • JWT • bcrypt
+
+NestJS • TypeORM • PostgreSQL (Docker) • JWT • bcrypt • Class Validator
 
 ---
 
 ## 🎥 Demo & API Testing
 
-- 🎥 Loom Video: https://www.loom.com/share/02e9b0b1664f4812aefcb5c75c477498  
-- 📦 Postman Collection: https://solar-shuttle-667923.postman.co/workspace/ca6a7db0-ba68-4a43-8a6a-74f7a097cbbe/collection/43085990-025e7b4e-ae8c-4c62-ae28-2275a781c504?action=copy-link&source=copy-link&creator=43085990  
+* 🎥 Loom Video: https://www.loom.com/share/8d1e25bff54f46c686970ecfd808923b
 
 ---
 
-## 🔐 Features Implemented
+## 🚀 Features
 
-- User Signup & Login APIs
-- DTO validation for request handling
-- Exception handling for auth flows
-- JWT Authentication system
-  - `jwt-auth.guard.ts`
-  - `jwt.strategy.ts` (payload extraction & token validation)
-- User entity with role-based enum (DOCTOR / PATIENT)
-- Role-based access control
-  - `roles.decorator.ts`
-  - `roles.guard.ts`
-- Password hashing using bcrypt
-- PostgreSQL connected via Docker container
-- User data stored & verified in database
-- Entire flow tested using Postman collection
+### Doctor Onboarding
+
+* POST `/doctor/profile`
+* GET `/doctor/profile`
+* PATCH `/doctor/profile`
+
+### Patient Onboarding
+
+* POST `/patient/profile`
+* GET `/patient/profile`
+* PATCH `/patient/profile`
+
+### Security
+
+* JWT Authentication
+* Role-Based Authorization (DOCTOR / PATIENT)
+* Password Hashing using bcrypt
+* PostgreSQL running in Docker container
 
 ---
 
-## 🧱 File Structure
+## 🏗️ Database Design
 
-```bash
-src
-├── auth
-│   ├── dto
-│   │   ├── login.dto.ts
-│   │   └── signup.dto.ts
-│   │
-│   ├── auth.controller.ts
-│   ├── auth.module.ts
-│   ├── auth.service.ts
-│   │
-│   ├── jwt-auth.guard.ts
-│   ├── jwt.strategy.ts
-│   ├── roles.decorator.ts
-│   ├── roles.guard.ts
-│   └── user.entity.ts
-│
-├── common
-│   └── role.enum.ts
-│
-├── app.module.ts
-└── main.ts
+* User ↔ Doctor Profile (One-to-One)
+* User ↔ Patient Profile (One-to-One)
+
+### Entities
+
+* User
+* Doctor
+* Patient
+
+---
+
+## 🛡️ Edge Cases Handled
+
+* Prevent duplicate profile creation (`409 Conflict`)
+* Return `404 Not Found` when profile is not found
+* Restrict Doctor access to Patient APIs (`403 Forbidden`)
+* Restrict Patient access to Doctor APIs (`403 Forbidden`)
+* Validate required fields using DTOs
+* Handle invalid request payloads (`400 Bad Request`)
+* Prevent updates to restricted fields (`id`, `user`, `role`)
+
+---
+
+## 📸 API Testing
+
+### Role-Based Protection
+
+![Role Protection](./postman_ss/6.png)
+
+All API testing screenshots are available in the `postman_ss` folder.
