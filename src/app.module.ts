@@ -1,7 +1,8 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from './auth/auth.module';
-
+import { DoctorModule } from './doctor/doctor.module';
+import { PatientModule } from './patient/patient.module';
 @Module({
   imports: [
     TypeOrmModule.forRoot({
@@ -12,9 +13,11 @@ import { AuthModule } from './auth/auth.module';
       password: 'postgres',
       database: 'schedula',
       autoLoadEntities: true,
-      synchronize: true,
+      synchronize: false,
     }),
     AuthModule,
+    DoctorModule,
+    PatientModule,
   ],
 })
 export class AppModule {}
