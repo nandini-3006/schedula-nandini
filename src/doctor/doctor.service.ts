@@ -1,8 +1,10 @@
 import {
+  BadRequestException,
   Injectable,
   ConflictException,
   NotFoundException,
 } from '@nestjs/common';
+import { ILike } from 'typeorm';
 import { UpdateDoctorDto } from './dto/update.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
@@ -104,5 +106,81 @@ async updateProfile(
     doctor,
   );
 }
+async getDoctors(
+  search?: string,
+  specialization?: string,
+  page = 1,
+  limit = 10,
+   availability?: string,
+) {
 
+  if (page < 1 || limit < 1) {
+    throw new BadRequestException(
+      'Page and limit must be positive',
+    );
+  }
+
+  const query = this.doctorRepository
+    .createQueryBuilder('doctor');
+
+  if (search) {
+    query.andWhere(
+      'LOWER(doctor.fullName) LIKE LOWER(:search)',
+      {
+        search: `%${search}%`,
+      },
+    );
+  }
+
+  if (specialization) {
+    query.andWhere(
+      'LOWER(doctor.specialization) = LOWER(:specialization)',
+      {
+        specialization,
+      },
+    );
+  }
+if (availability === 'true') {
+  query.andWhere(
+    'doctor.availability IS NOT NULL',
+  );
+}
+  query.select([
+    'doctor.id',
+    'doctor.fullName',
+    'doctor.specialization',
+    'doctor.experience',
+    'doctor.consultationFee',
+    'doctor.availability',
+  ]);
+
+  query.skip((page - 1) * limit);
+  query.take(limit);
+
+  const doctors = await query.getMany();
+
+  if (doctors.length === 0) {
+    throw new NotFoundException(
+      'No doctors found',
+    );
+  }
+
+  return doctors;
+}
+
+async getDoctorById(id: number) {
+
+  const doctor =
+    await this.doctorRepository.findOne({
+      where: { id },
+    });
+
+  if (!doctor) {
+    throw new NotFoundException(
+      'Doctor not found',
+    );
+  }
+
+  return doctor;
+}
 }
